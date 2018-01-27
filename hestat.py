@@ -31,9 +31,23 @@ class HEStat:
         for x in list:
             var = x - average
             variance = variance + (var * var)
-        return variance
+        return variance/ (len(list))
 
     @staticmethod
     def stdDev(list):
         if list:
             return math.sqrt(HEStat.variance(list))
+
+    @staticmethod
+    def median(list):
+        if list:
+            list.sort()
+            print(list)
+            if len(list)%2 == 0:
+                indx1 = int(len(list)/2)
+                indx2 = indx1-1
+                return (list[indx1]+list[indx2])/2
+            else:
+                indx = int(len(list)/2)
+                return list[indx]
+
